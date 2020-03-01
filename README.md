@@ -3,4 +3,4 @@ Integrantes
 - Mónica Espínola
 - Rafael Pukall
 - Luján Mir
-- Matías Avalos
+- Mathías Avalos

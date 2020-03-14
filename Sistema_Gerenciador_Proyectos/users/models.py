@@ -7,9 +7,9 @@ class Proyecto(models.Model):
     nombre_proyecto = models.CharField(max_length=50, help_text="Ingrese el nombre del proyecto")
     descripción= models.CharField(max_length=90, help_text="Descripción del proyecto")
     
-    estados_proyecto= ('a','Activo',
-    'i','Inactivo',
-    'f','Finalizado')
+    estados_proyecto= (('a','Activo'),
+    ('i','Inactivo'),
+    ('f','Finalizado'), )
     estado= models.CharField(
         max_length=1,
         choices= estados_proyecto,
@@ -19,7 +19,7 @@ class Proyecto(models.Model):
     )
      def get_absolute_url(self):
         """Retorna el URL para acceder a una instancia del proyecto en particular."""
-        return reverse('Proyecto', args=[str(self.id)])
+        return reverse('proyecto-detail', args=[str(self.id)])
 
     def __str__(self):
         """Formato de nombre y estado del proyecto."""
@@ -28,6 +28,7 @@ class Proyecto(models.Model):
     # Metadata
     class Meta: 
         ordering = ["estado"]
+
         
 
 

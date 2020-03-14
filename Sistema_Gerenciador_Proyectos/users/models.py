@@ -5,6 +5,8 @@ from django.urls import reverse
 class Usuario(models.Model):
     nombre = models.CharField(max_length = 50, help_text = "Ingrese el nombre del usuario")
     apellido = models.CharField(max_length = 50, help_text = "Ingrese el apellido del usuario")
+    rol = models.ForeignKey('Rol', on_delete = models.SET_NULL, null = True)
+    proyecto = models.ForeignKey('Proyecto', on_delete = models.SET_NULL, null = True)
 
     def __str__ (self):
         return '%s, %s' % (self.apellido, self.nombre)

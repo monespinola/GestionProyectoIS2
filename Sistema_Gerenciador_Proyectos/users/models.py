@@ -3,11 +3,11 @@ from django.urls import reverse
 
 # Create your models here.
 class Usuario(models.Model):
-	nombre = models.CharField(max_length = 50, help_text = "Ingrese el nombre del usuario")
-	apellido = models.CharField(max_length = 50, help_text = "Ingrese el apellido del usuario")
+    nombre = models.CharField(max_length = 50, help_text = "Ingrese el nombre del usuario")
+    apellido = models.CharField(max_length = 50, help_text = "Ingrese el apellido del usuario")
 
-	def __str__ (self):
-		return '%s, %s' % (self.apellido, self.nombre)
+    def __str__ (self):
+        return '%s, %s' % (self.apellido, self.nombre)
 
     def get_absolute_url(self):
         return reverse('usuario-detail', args=[str(self.id)])
@@ -21,9 +21,9 @@ class Proyecto(models.Model):
     descripcion= models.CharField(max_length = 200, help_text="Descripción del proyecto")
 
     estados_proyecto = (
-    	('a','Activo'),
-    	('i','Inactivo'),
-    	('f','Finalizado'),
+        ('a','Activo'),
+        ('i','Inactivo'),
+        ('f','Finalizado'),
     )
 
     estado = models.CharField(
@@ -41,7 +41,7 @@ class Proyecto(models.Model):
         return reverse('proyecto-detail', args=[str(self.id)])
 
     def __str__ (self):
-		return '%s, %s' % (self.nombre_proyecto, self.estados_proyecto)
+        return '%s, %s' % (self.nombre_proyecto, self.estados_proyecto)
 
     # Metadata
     class Meta: 

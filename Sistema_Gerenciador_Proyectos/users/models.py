@@ -23,9 +23,9 @@ class Proyecto(models.Model):
     descripcion= models.CharField(max_length = 200, help_text="Descripción del proyecto")
 
     estados_proyecto = (
-        ('a','Activo'),
-        ('i','Inactivo'),
-        ('f','Finalizado'),
+        ('A','Activo'),
+        ('I','Inactivo'),
+        ('F','Finalizado'),
     )
 
     estado = models.CharField(

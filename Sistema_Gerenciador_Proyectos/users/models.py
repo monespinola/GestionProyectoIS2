@@ -9,7 +9,7 @@ class Usuario(models.Model):
     proyecto = models.ForeignKey('Proyecto', on_delete = models.SET_NULL, null = True)
 
     def __str__ (self):
-        return '%s, %s' % (self.apellido, self.nombre)
+        return '%s %s' % (self.nombre, self.apellido)
 
     def get_absolute_url(self):
         return reverse('usuario-detail', args=[str(self.id)])
@@ -43,7 +43,7 @@ class Proyecto(models.Model):
         return reverse('proyecto-detail', args=[str(self.id)])
 
     def __str__ (self):
-        return '%s, %s' % (self.nombre_proyecto, self.estados_proyecto)
+        return '%s' % (self.nombre_proyecto)
 
     # Metadata
     class Meta: 
@@ -56,8 +56,12 @@ class Rol(models.Model):
 
     def __str__(self):
         """Formato del rol por proyecto."""
-        return '{0}, {1}'.format(self.nombre_rol, self.descripcion)
+        return '{0}'.format(self.nombre_rol)
 
     def get_absolute_url(self):
         """Retorna el URL para acceder a una instancia de un rol en particular."""
         return reverse('rol-detail', args=[str(self.id)])
+
+    class Meta:
+        verbose_name = "Rol"
+        verbose_name_plural = "Roles"

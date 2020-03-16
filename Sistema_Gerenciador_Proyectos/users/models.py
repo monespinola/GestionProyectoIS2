@@ -49,10 +49,18 @@ class Proyecto(models.Model):
     class Meta: 
         ordering = ["estado"]
 
+class Permiso(models.Model):
+    nombre_permiso = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length = 200, help_text = "Ingrese descripcion")
+
+    def __str__ (self):
+            return '%s' % (self.nombre_permiso)
+
 class Rol(models.Model):        
     # Campos
     nombre_rol = models.CharField(max_length = 30, help_text = "Ingrese el nombre del rol")
     descripcion = models.CharField(max_length = 200, help_text = "Ingrese descripcion")
+    permiso = models.ManyToManyField(Permiso, help_text = "Seleccione uno o más permisos")
 
     def __str__(self):
         """Formato del rol por proyecto."""
@@ -65,3 +73,5 @@ class Rol(models.Model):
     class Meta:
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
+
+

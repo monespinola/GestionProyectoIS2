@@ -73,5 +73,3 @@ class Rol(models.Model):
     class Meta:
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
-
-

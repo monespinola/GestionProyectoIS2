@@ -1,3 +1,4 @@
+
 """
 Django settings for Sistema_Gerenciador_Proyectos project.
 

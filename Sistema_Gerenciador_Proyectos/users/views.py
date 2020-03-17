@@ -18,7 +18,7 @@ def logout(request):
 def welcome(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
-        return render(request, "admin/users/welcome.html")
+        return render(request, "home/welcome.html")
     # En otro caso redireccionamos al login
     return redirect('/login')
 
@@ -30,6 +30,7 @@ def login(request):
         form = AuthenticationForm(data=request.POST)
         # Si el formulario es válido...
         if form.is_valid():
+            
             # Recuperamos las credenciales validadas
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -45,7 +46,7 @@ def login(request):
                 return redirect('/')
 
     # Si llegamos al final renderizamos el formulario
-    return render(request, "admin/users/login.html", {'form': form})
+    return render(request, "users/template//login.html", {'form': form})
 def register(request):
     # Creamos el formulario de autenticación vacío
     form = UserCreationForm()
@@ -66,4 +67,4 @@ def register(request):
                 return redirect('/')
 
     # Si llegamos al final renderizamos el formulario
-    return render(request, "admin/users/register.html", {'form': form})
+    return render(request, "users/template//register.html", {'form': form})

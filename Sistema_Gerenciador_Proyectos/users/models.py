@@ -5,11 +5,9 @@ from django.urls import reverse
 class Usuario(models.Model):
     nombre = models.CharField(max_length = 50, help_text = "Ingrese el nombre del usuario")
     apellido = models.CharField(max_length = 50, help_text = "Ingrese el apellido del usuario")
-    rol = models.ForeignKey('Rol', on_delete = models.SET_NULL, null = True)
-    proyecto = models.ForeignKey('Proyecto', on_delete = models.SET_NULL, null = True)
 
     def __str__ (self):
-        return '%s %s' % (self.nombre, self.apellido)
+        return '%s, %s' % (self.apellido, self.nombre)
 
     def get_absolute_url(self):
         return reverse('usuario-detail', args=[str(self.id)])
@@ -23,9 +21,9 @@ class Proyecto(models.Model):
     descripcion= models.CharField(max_length = 200, help_text="Descripción del proyecto")
 
     estados_proyecto = (
-        ('A','Activo'),
-        ('I','Inactivo'),
-        ('F','Finalizado'),
+        ('a','Activo'),
+        ('i','Inactivo'),
+        ('f','Finalizado'),
     )
 
     estado = models.CharField(
@@ -43,25 +41,8 @@ class Proyecto(models.Model):
         return reverse('proyecto-detail', args=[str(self.id)])
 
     def __str__ (self):
-        return '%s' % (self.nombre_proyecto)
+        return '%s, %s' % (self.nombre_proyecto, self.estados_proyecto)
 
     # Metadata
     class Meta: 
         ordering = ["estado"]
-
-class Rol(models.Model):        
-    # Campos
-    nombre_rol = models.CharField(max_length = 30, help_text = "Ingrese el nombre del rol")
-    descripcion = models.CharField(max_length = 200, help_text = "Ingrese descripcion")
-
-    def __str__(self):
-        """Formato del rol por proyecto."""
-        return '{0}'.format(self.nombre_rol)
-
-    def get_absolute_url(self):
-        """Retorna el URL para acceder a una instancia de un rol en particular."""
-        return reverse('rol-detail', args=[str(self.id)])
-
-    class Meta:
-        verbose_name = "Rol"
-        verbose_name_plural = "Roles"

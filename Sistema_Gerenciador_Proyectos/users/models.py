@@ -71,3 +71,11 @@ class Rol(models.Model):
     class Meta:
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
+# Create your models here.
+class Tarea(models.Model):
+    version = models.CharField(max_length=50)
+    prioridad = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=50)
+    observacion = models.CharField(max_length=50)
+    id_tarea_padre = models.IntegerField()

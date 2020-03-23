@@ -21,9 +21,9 @@ class Proyecto(models.Model):
     descripcion= models.CharField(max_length = 200, help_text="Descripción del proyecto")
 
     estados_proyecto = (
-        ('a','Activo'),
-        ('i','Inactivo'),
-        ('f','Finalizado'),
+        ('A','Activo'),
+        ('I','Inactivo'),
+        ('F','Finalizado'),
     )
 
     estado = models.CharField(
@@ -71,7 +71,7 @@ class Rol(models.Model):
     class Meta:
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
-# Create your models here.
+
 class Tarea(models.Model):
     version = models.CharField(max_length=50)
     prioridad = models.CharField(max_length=50)
@@ -79,3 +79,4 @@ class Tarea(models.Model):
     descripcion = models.CharField(max_length=50)
     observacion = models.CharField(max_length=50)
     id_tarea_padre = models.IntegerField()
+

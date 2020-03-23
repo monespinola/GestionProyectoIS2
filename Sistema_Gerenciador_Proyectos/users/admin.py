@@ -1,3 +1,4 @@
+from django.contrib import admin
 from .models import Proyecto, Usuario, Rol, Permiso
 
 # Register your models here.

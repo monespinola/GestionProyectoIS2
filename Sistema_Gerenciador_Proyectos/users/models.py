@@ -21,9 +21,9 @@ class Proyecto(models.Model):
     descripcion= models.CharField(max_length = 200, help_text="Descripción del proyecto")
 
     estados_proyecto = (
-        ('a','Activo'),
-        ('i','Inactivo'),
-        ('f','Finalizado'),
+        ('A','Activo'),
+        ('I','Inactivo'),
+        ('F','Finalizado'),
     )
 
     estado = models.CharField(
@@ -71,7 +71,7 @@ class Rol(models.Model):
     class Meta:
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
-# Create your models here.
+
 class Tarea(models.Model):
     version = models.CharField(max_length=50)
     prioridad = models.CharField(max_length=50)
@@ -80,6 +80,7 @@ class Tarea(models.Model):
     observacion = models.CharField(max_length=50)
     id_tarea_padre = models.IntegerField()
 
+<<<<<<< HEAD
 class LineaBase(models.Model):
     #campos
     nombre_lb = models.CharField(max_length = 30, help_text = "Ingrese el nombre de la Linea Base")
@@ -89,3 +90,5 @@ class LineaBase(models.Model):
     def __str__(self):
         """Formato del rol por proyecto."""
         return '{0}'.format(self.nombre_lb)
+=======
+>>>>>>> 68456294c19ea61eb245b50419f8f1c45990a884

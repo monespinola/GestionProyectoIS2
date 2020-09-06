@@ -79,3 +79,13 @@ class Tarea(models.Model):
     descripcion = models.CharField(max_length=50)
     observacion = models.CharField(max_length=50)
     id_tarea_padre = models.IntegerField()
+
+class LineaBase(models.Model):
+    #campos
+    nombre_lb = models.CharField(max_length = 30, help_text = "Ingrese el nombre de la Linea Base")
+    descripcion = models.CharField(max_length = 200, help_text = "Ingrese descripcion")
+    tarea = models.ManyToManyField(Tarea, help_text = "Seleccione uno o más tareas")
+
+    def __str__(self):
+        """Formato del rol por proyecto."""
+        return '{0}'.format(self.nombre_lb)
